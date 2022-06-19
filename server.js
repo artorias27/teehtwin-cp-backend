@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 var corsOptions = {
@@ -10,8 +10,9 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true })); 
+app.use("/api/auth", authRoutes);
 
-const db = require("./app/models");
+const db = require("./models/index");
 
 // db.sequelize.sync();
 // // drop the table if it already exists
