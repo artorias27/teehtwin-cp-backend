@@ -1,4 +1,3 @@
-const Joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const db = require("../models/index");
@@ -18,7 +17,13 @@ const register = async(req, res) => {
     res.status(201).send({...user.toJSON(), token});
 };
 
+const testProtectedRoute = (req, res) => {
+    console.log(req);
+    res.send("It's me");
+}
+
 module.exports = {
     signin,
-    register
+    register,
+    testProtectedRoute
 }
